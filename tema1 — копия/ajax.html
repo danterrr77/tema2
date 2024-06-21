@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>A-Jax</title>
+</head>
+<body>
+<form action ="bd_1.php" method= "POST" accept-charset="url-8">
+    <p>Введите тему</p>
+<input type="text">
+<p>
+    <p>Введите сообщение</p>
+<textarea></textarea>
+    <p>
+    <button >Отправить</button>
+</form>
+<script>
+    $(document).ready(function(){
+        $('button.send').on('click', function (){
+            var titleVal = $('input.title').val();
+            var contentVal = $('textarea.content').val();
+
+            //
+            $.ajax({
+                method: "POST",
+                url: "some.php",
+                data: { title: titleVal, content: contentVal }
+            })
+                .done(function( msg ) {
+                    //alert( "Data Saved: " + msg );
+                });
+            $('input.title').val('');
+            $('textarea.content').val('');
+
+            })
+        });
+</script>
+</body>
+</html>
